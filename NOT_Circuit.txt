@@ -1,0 +1,22 @@
+// DSCH 2.7f
+// 27-Nov-22 10:32:27 PM
+// H:\B.Sc in CSE\9th Semester\CSE-341 & 342 VLSI\NOT_Circuit.sch
+
+module NOT_Circuit( A,in2,in3,P,out2,out3);
+ input A,in2,in3;
+ output P,out2,out3;
+ not #(10) inv(P,A);
+ not #(10) inv(out3,in3);
+ not #(12) sub_1(out2,in2);
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 A=~A;
+#2000 in2=~in2;
+#4000 in3=~in3;
+
+// Simulation parameters
+// A CLK 10 10
+// in2 CLK 20 20
+// in3 CLK 40 40

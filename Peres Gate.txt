@@ -1,0 +1,32 @@
+// DSCH 2.7f
+// 23-Nov-22 11:59:20 AM
+// H:\B.Sc in CSE\9th Semester\CSE-341 & 342 VLSI\Peres Gate.sch
+
+module Peres Gate( c,b,a,Q,R,P);
+ input c,b,a;
+ output Q,R,P;
+ or #(16) or(Q,w2,w3);
+ and #(16) and(w3,w4,a);
+ and #(16) and(w2,b,w7);
+ or #(16) or(R,w10,w11);
+ and #(16) and(w11,w12,w13);
+ and #(16) and(w10,c,w15);
+ and #(16) and(w13,b,a);
+ not #(10) inv(w15,w16);
+ and #(16) and(w16,b,a);
+ not #(10) inv(w12,c);
+ not #(10) inv(w4,b);
+ not #(17) inv(w7,a);
+ not #(10) inv(P,w7);
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 c=~c;
+#2000 b=~b;
+#4000 a=~a;
+
+// Simulation parameters
+// c CLK 10 10
+// b CLK 20 20
+// a CLK 40 40

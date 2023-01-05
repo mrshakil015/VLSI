@@ -1,0 +1,30 @@
+// DSCH 2.7f
+// 23-Nov-22 11:48:53 AM
+// H:\B.Sc in CSE\9th Semester\CSE-341 & 342 VLSI\Toffoli.sch
+
+module Toffoli( A,B,C,R,P,Q);
+ input A,B,C;
+ output R,P,Q;
+ or #(16) or(R,w2,w3);
+ not #(10) inv(w5,C);
+ and #(16) and(w3,w5,w6);
+ and #(16) and(w6,B,A);
+ and #(16) and(w2,w9,C);
+ and #(16) and(w10,B,A);
+ not #(10) inv(w9,w10);
+ not #(10) inv(Q,w13);
+ not #(10) inv(w13,B);
+ not #(10) inv(P,w14);
+ not #(10) inv(w14,A);
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 A=~A;
+#2000 B=~B;
+#4000 C=~C;
+
+// Simulation parameters
+// A CLK 10 10
+// B CLK 20 20
+// C CLK 40 40

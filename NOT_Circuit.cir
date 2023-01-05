@@ -1,0 +1,29 @@
+* File name: H:\B.Sc in CSE\9th Semester\CSE-341 & 342 VLSI\NOT_Circuit.sch
+* Software version: DSCH 2.7f
+* Created 27-Nov-22 10:32:34 PM
+*
+* Voltage and current sources
+*
+VBTN1 2 0 DC 0 PULSE(0 1.2 1.00N 0.1N 0.1N 1.00N 3.00N )
+VBTN2 4 0 DC 0 PULSE(0 1.2 2.00N 0.1N 0.1N 2.00N 5.00N )
+VBTN3 6 0 DC 0 PULSE(0 1.2 3.00N 0.1N 0.1N 3.00N 7.00N )
+*
+* Passive devices
+*
+*
+* Active devices
+*
+*
+* Warning: "spice.lib" not found, model not declared
+.TRAN 0.1ns 250ns
+*--WinSpice3--
+* Run simulation
+*#run
+*
+* Dump time and volts in "NOT_Circuit.txt"
+*#set nobreak
+*#print V(2) V(4) V(6)  V(3) V(5) V(7)  > NOT_Circuit.txt
+* Show the result in a window
+*#plot V(2) V(4) V(6)  V(3) V(5) V(7) 
+.OPTIONS DELMIN=0 RELTOL=1E-6
+.END

@@ -1,0 +1,35 @@
+// DSCH 2.7f
+// 23-Nov-22 11:53:41 AM
+// H:\B.Sc in CSE\9th Semester\CSE-341 & 342 VLSI\Reversible Gate.sch
+
+module Reversible Gate( C,A,B,R,Q,P);
+ input C,A,B;
+ output R,Q,P;
+ and #(16) and(w5,w2,w3,C);
+ not #(10) inv(w2,w6);
+ and #(16) and(w6,B,A);
+ or #(16) or(Q,w10,w11);
+ and #(16) and(w11,w3,B,w12);
+ not #(10) inv(w12,w13);
+ and #(16) and(w13,C,A);
+ and #(16) and(w10,w15,A,C);
+ and #(16) and(w16,B,w3);
+ not #(10) inv(w15,w16);
+ not #(38) inv(w3,A);
+ not #(10) inv(w18,w17);
+ or #(16) or(R,w5,w19);
+ and #(16) and(w19,A,B,w18);
+ and #(16) and(w17,C,w3);
+ not #(10) inv(P,w3);
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 C=~C;
+#2000 A=~A;
+#4000 B=~B;
+
+// Simulation parameters
+// C CLK 10 10
+// A CLK 20 20
+// B CLK 40 40

@@ -1,0 +1,35 @@
+USER SYMBOL by DSCH 2.7f
+DATE 23-Nov-22 11:44:59 AM
+SYM  #Toffoli_Circuit
+BB(0,0,40,40)
+TITLE 10 -2  #Toffoli_Circuit
+MODEL 6000
+REC(5,5,30,30)
+PIN(0,10,0.00,0.00)A
+PIN(0,20,0.00,0.00)B
+PIN(0,30,0.00,0.00)C
+PIN(40,30,2.00,1.00)R
+PIN(40,10,2.00,1.00)P
+PIN(40,20,2.00,1.00)Q
+LIG(0,10,5,10)
+LIG(0,20,5,20)
+LIG(0,30,5,30)
+LIG(35,30,40,30)
+LIG(35,10,40,10)
+LIG(35,20,40,20)
+LIG(5,5,5,35)
+LIG(5,5,35,5)
+LIG(35,5,35,35)
+LIG(35,35,5,35)
+VLG module Toffoli( A,B,C,R,P,Q);
+VLG  input A,B,C;
+VLG  output R,P,Q;
+VLG  or #(16) or(R,w2,w3);
+VLG  not #(10) inv(w5,C);
+VLG  and #(16) and(w3,w5,w6);
+VLG  and #(16) and(w6,Q,A);
+VLG  and #(16) and(w2,w9,C);
+VLG  and #(16) and(w10,Q,A);
+VLG  not #(10) inv(w9,w10);
+VLG endmodule
+FSYM
